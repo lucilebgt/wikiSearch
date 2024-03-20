@@ -1,8 +1,9 @@
 // API ENDPOINT : `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
 
+const form = document.querySelector("form");
+
 
 const input = document.querySelector("input");
-const inputValue = input.value;
 const errorMsg = document.querySelector(".error-msg");
 const resultsDisplay = document.querySelector(".results-display");
 const loader = document.querySelector(".loader");
@@ -43,13 +44,15 @@ const wikiCall = async (searchInput) => {
     try {
         const response = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`)
         // console.log(response);
+
+
         //->en cas d'erreur url affichage sur la page
         if (!response.ok) {
             throw new Error(`${response.status}`);
         }
         const data = await response.json()
         // console.log(data);
-        const createCard = (data.query.search);
+        createCard(data.query.search);
     }
     catch (error) {
         errorMsg.textContent = `${error}`;
@@ -61,15 +64,14 @@ const wikiCall = async (searchInput) => {
 const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!inputValue === "") {
+    if (!input.value === "") {
         errorMsg.textContent = "Merci de remplir le champs ";
         return;
     } else {
         errorMsg.textContent = "";
         loader.style.display = "flex";
         resultsDisplay.textContent = "";
-        wikiCall(inputValue)
+        wikiCall(input.value)
     }
 }
-const form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);
