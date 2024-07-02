@@ -1,7 +1,16 @@
-# wikiSearch
+# WIKI-SEARCH
 
-*HTML_CSS_JAVASCRIPT*
+**STACK :**
+-  HTML
+-  CSS
+-  JAVASCRIPT
 
-recherche avec Wikipédia
+        utilisation d'une api simple
 
-utilisation d'une api simple
+Petite appli de recherche avec Wikipédia toute simple
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
